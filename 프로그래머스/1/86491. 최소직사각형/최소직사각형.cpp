@@ -3,20 +3,9 @@ using namespace std;
 
 int solution(vector<vector<int>> sizes) 
 {
-    int w;
-    int h;
-    if(sizes[0][0] >= sizes[0][1])
-    {
-        w = sizes[0][0];
-        h = sizes[0][1];
-    }
-    else
-    {
-        w = sizes[0][1];
-        h = sizes[0][0];
-    }
+    int w = 0, h = 0;
         
-    for(int i = 1; i < sizes.size(); i++)
+    for(int i = 0; i < sizes.size(); i++)
     {
         if(sizes[i][0] >= sizes[i][1])
         {
