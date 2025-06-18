@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
 #include <algorithm> // count()
-#include <cmath> // pow()
 // regex?
 // erase(remove())?
 // 비트연산?
