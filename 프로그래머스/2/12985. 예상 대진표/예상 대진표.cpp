@@ -1,10 +1,8 @@
-#include <iostream>
-
 using namespace std;
 
 int solution(int n, int a, int b)
 {
-    int answer = 1;
+    int answer = 0;
 
     while (a != b)
     {
@@ -13,5 +11,5 @@ int solution(int n, int a, int b)
         answer++;
     }
     
-    return answer - 1;
+    return answer;
 }
