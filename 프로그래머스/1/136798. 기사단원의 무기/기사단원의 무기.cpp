@@ -1,20 +1,21 @@
-#include <cmath>
 using namespace std;
 
 int Divisor(int num)
 {
     int count = 0;
-    for(int i = 1; i <= sqrt(num); i++)
+    for(int i = 1; i * i <= num; i++)
     {
         if(num % i == 0)
         {
             count += 2;
+            
+            if(i * i == num)
+            {
+                count--;
+            }
         }
         
-        if(i * i == num)
-        {
-            count--;
-        }
+
     }
     return count;
 }
