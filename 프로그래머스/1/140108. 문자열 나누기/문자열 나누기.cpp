@@ -16,7 +16,7 @@ int solution(string s)
         {
             count1++;
         }
-        else if(s[i] != temp)
+        else
         {
             count2++;
             if(count1 == count2)
@@ -27,6 +27,7 @@ int solution(string s)
             }
         }
     }
-    if(count1 != count2) { answer++; }
+    if(count1 != count2)
+        answer++;
     return answer;
 }
