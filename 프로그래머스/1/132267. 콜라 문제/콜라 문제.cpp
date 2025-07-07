@@ -2,15 +2,11 @@ using namespace std;
 
 int solution(int a, int b, int n) 
 {
-    int answer = 0;
-    int check = 0;
-    
-    while(n >= a)
-    {
-        check = n / a;
-        n = n - check * a + check * b;
-        answer += check * b;
+    int answer = 0, Return;
+    while(n >= a) {
+        Return = n / a;
+        n = n - Return * a + Return * b;
+        answer += Return * b;
     }
-    
     return answer;
 }
