@@ -13,6 +13,5 @@ bool solution(int x)
     
     for (int temp : vec) { b += temp; }
     
-    if(x % b != 0) { return false; }
-    else { return true; }
+    return x % b != 0 ? false : true;
 }
