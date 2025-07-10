@@ -9,5 +9,5 @@ bool solution(int x)
         a /= 10;
     }
     
-    return x % b != 0 ? false : true;
+    return x % b == 0;
 }
