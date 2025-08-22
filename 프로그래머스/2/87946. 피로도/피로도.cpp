@@ -1,0 +1,25 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(int k, vector<vector<int>> dungeons) 
+{
+    int answer = 0;
+    
+    do {
+        int temp = k;
+        int count = 0;
+        for(int i = 0; i < dungeons.size(); i++)
+        {
+            if (dungeons[i][0] <= temp && dungeons[i][1] <= temp)
+            {
+                count++;
+                temp -= dungeons[i][1];
+            }
+        }
+        answer = max(answer, count);
+    } while (next_permutation(dungeons.begin(), dungeons.end()));
+    
+    return answer;
+}
