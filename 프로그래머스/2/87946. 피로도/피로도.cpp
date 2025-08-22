@@ -7,12 +7,14 @@ int solution(int k, vector<vector<int>> dungeons)
 {
     int answer = 0;
     
+    sort(dungeons.begin(), dungeons.end());
+    
     do {
         int temp = k;
         int count = 0;
         for(int i = 0; i < dungeons.size(); i++)
         {
-            if (dungeons[i][0] <= temp && dungeons[i][1] <= temp)
+            if (dungeons[i][0] <= temp)
             {
                 count++;
                 temp -= dungeons[i][1];
