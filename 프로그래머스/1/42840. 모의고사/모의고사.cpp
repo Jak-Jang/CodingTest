@@ -1,4 +1,3 @@
-#include <string>
 #include <vector>
 #include <algorithm>
 using namespace std;
@@ -10,7 +9,7 @@ vector<int> third = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 vector<int> solution(vector<int> answers) 
 {
     vector<int> answer;
-    vector<int> count(3); // 크기가 3인 배열을 (default) 0으로 초기화
+    vector<int> count(3);
     
     for(int i = 0; i < answers.size(); i++)
     {
@@ -33,7 +32,7 @@ vector<int> solution(vector<int> answers)
     {
         if(count[i] == score)
         {
-            answer.push_back(i+1);
+            answer.push_back(i + 1);
         }
     }
     
