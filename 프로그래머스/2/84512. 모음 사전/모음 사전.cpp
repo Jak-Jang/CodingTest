@@ -1,18 +1,36 @@
 #include <string>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
+vector<string> dictionary;
+string v = "AEIOU";
+
+void bf_dfs(string current_word) 
+{
+    if (current_word.length() > 5) return;
+
+    if (!current_word.empty()) 
+    {
+        dictionary.push_back(current_word);
+    }
+
+    for (char it : v) 
+    {
+        bf_dfs(current_word + it);
+    }
+}
+
 int solution(string word) 
 {
-    string v = string("AEIOU");
-    int answer = 0;
-    int multiple = 781; // 5^0 + 5^1 + 5^2 + 5^3 + 5^4
-    
-    for (char c : word) 
+    bf_dfs("");
+    sort(dictionary.begin(), dictionary.end());
+
+    for (int i = 0; i < dictionary.size(); ++i) 
     {
-        answer += v.find(c) * multiple + 1;
-        multiple /= 5;
+        if (dictionary[i] == word) return i + 1;
     }
     
-    return answer;
+    return 0;
 }
