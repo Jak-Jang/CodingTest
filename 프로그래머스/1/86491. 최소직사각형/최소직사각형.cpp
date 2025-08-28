@@ -30,5 +30,6 @@ int solution(vector<vector<int>> sizes)
             }
         }
     }
+    
     return w * h;
 }
