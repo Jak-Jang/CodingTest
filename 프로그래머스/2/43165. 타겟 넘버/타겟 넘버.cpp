@@ -8,7 +8,7 @@ int solution(vector<int> numbers, int target)
     int n = numbers.size();
     
     // 부분 집합의 경우의 수 = n^2
-    for(int i = 0; i < 1 << n; i++) 
+    for (int i = 0; i < (1 << n); i++) 
     {
         int sum = 0;
         
