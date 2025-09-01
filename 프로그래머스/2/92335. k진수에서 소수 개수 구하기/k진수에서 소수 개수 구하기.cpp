@@ -23,7 +23,7 @@ int solution(int n, int k)
     string num = "";
     vector<string> numbers;
     
-    while(n > 0)
+    while (n > 0)
     {
         num += to_string(n % k);
         n /= k;
@@ -32,15 +32,15 @@ int solution(int n, int k)
     
     stringstream temp(num);
     string s;
-    while(getline(temp, s, '0'))
+    while (getline(temp, s, '0'))
     {
         if (!s.empty()) numbers.push_back(s);
     }
     
-    for(string it : numbers)
+    for (string it : numbers)
     {
         long long t = stoll(it);
-        if(isPrime(t)) answer++;
+        if (isPrime(t)) answer++;
     }
     
     return answer;
