@@ -1,51 +1,33 @@
-#include <string>
-#include <vector>
-#include <unordered_map>
-#include <map>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-// sstream? substr?
-// 23:59 = 1439 min
-vector<int> solution(vector<int> fees, vector<string> records) 
-{
-    vector<int> answer;
-    unordered_map<string, int> temp;
-    map<string, int> save;
-    
-    for (string s : records)
-    {
-        string time = s.substr(0, 5);
-        string key = s.substr(6, 4);
-        int value = stoi(time.substr(0, 2)) * 60 + stoi(time.substr(3, 2));
-        
-        if (temp.find(key) == temp.end())
-        {
-            temp[key] = value;
-        }
-        else
-        {
-            save[key] += value - temp[key];
-            temp.erase(key);
-        }
+int conv(string& t) {
+    int h = (t[0] - 48) * 10 + t[1] - 48;
+    int m = (t[3] - 48) * 10 + t[4] - 48;
+    return h * 60 + m;
+}
+
+vector<int> solution(vector<int> fees, vector<string> records) {
+    vector<int> vec[10000];
+    for (auto& record : records) {
+        stringstream ss(record);
+        string a, b, c;
+        ss >> a >> b >> c;
+        vec[stoi(b)].push_back(conv(a));
     }
-    
-    for (auto it : temp)
-    {
-        save[it.first] += (1439 - it.second);
+
+    vector<int> ans;
+    for (int i = 0; i < 10000; ++i) if (!vec[i].empty()) {
+        if (vec[i].size() & 1) vec[i].push_back(23 * 60 + 59);
+
+        int sum = 0;
+        for (int j = 1; j < vec[i].size(); j += 2) sum += vec[i][j] - vec[i][j - 1];
+
+        int val = fees[1];
+        if (sum > fees[0]) val += (sum - fees[0] + fees[2] - 1) / fees[2] * fees[3];
+
+        ans.push_back(val);
     }
-    
-    for (auto it : save)
-    {
-        if (it.second - fees[0] <= 0) 
-        {
-            answer.push_back(fees[1]);
-            continue;
-        }
-        int total = fees[1] + (((it.second - fees[0]) / fees[2])) * fees[3];
-        if ((it.second - fees[0]) % fees[2] != 0) total += fees[3];
-        answer.push_back(total);
-    }
-    
-    return answer;
+
+    return ans;
 }
