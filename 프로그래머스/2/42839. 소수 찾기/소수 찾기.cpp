@@ -3,7 +3,6 @@
 
 using namespace std;
 
-string nums;
 bool visited[7];
 unordered_set<int> s;
 
@@ -20,19 +19,19 @@ bool isPrime(int n)
     return true;
 }
 
-void findCombinations(string currentNum)
+void makeNum(const string& numbers, string currentNum)
 {
     if (!currentNum.empty())
     {
         s.insert(stoi(currentNum));
     }
     
-    for (int i = 0; i < nums.length(); i++)
+    for (int i = 0; i < numbers.length(); i++)
     {
         if (!visited[i])
         {
             visited[i] = true;
-            findCombinations(currentNum + nums[i]);
+            makeNum(numbers, currentNum + numbers[i]);
             visited[i] = false;
         }
     }
@@ -41,9 +40,9 @@ void findCombinations(string currentNum)
 int solution(string numbers)
 {
     int answer = 0;
-    nums = numbers;
     
-    findCombinations("");
+    makeNum(numbers, "");
+    
     for (int it : s)
     {
         if (isPrime(it)) answer++;
