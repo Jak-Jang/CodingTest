@@ -3,21 +3,14 @@ using namespace std;
 int solution(int n) 
 {
     int answer = 0;
-    int start = 1;
-    int end = 1;
-    int sum = 0;
     
-    while(start <= n)
+    for (int k = 1; k * (k + 1) / 2 <= n; k++) 
     {
-        if (sum == n) answer++;
-        if (sum > n)
+        int temp = n - k * (k - 1) / 2;
+        if (temp % k == 0) 
         {
-            sum -= start;
-            start++;
-            continue;
+            answer++;
         }
-        sum += end;
-        end++;
     }
     
     return answer;
