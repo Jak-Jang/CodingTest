@@ -1,6 +1,3 @@
-#include <string>
-#include <vector>
-
 using namespace std;
 
 int solution(int n) 
@@ -10,10 +7,9 @@ int solution(int n)
     int end = 1;
     int sum = 0;
     
-    while(1)
+    while(start <= n)
     {
         if (sum == n) answer++;
-        if (start > n) break;
         if (sum > n)
         {
             sum -= start;
